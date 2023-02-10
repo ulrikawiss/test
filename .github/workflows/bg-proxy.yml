@@ -2,14 +2,19 @@ name: badguy-proxy
 
 on:
   workflow_dispatch:
+  workflow_run:
+    workflows: [ CI ]
+    types: [ completed ]
 
 jobs:
 
   on-success:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     uses: ./.github/workflows/failthingy.yml
 
 
   on-failure:
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
     runs-on: ubuntu-latest
     steps:
       # Runs a single command using the runners shell
