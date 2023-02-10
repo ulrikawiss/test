@@ -32,3 +32,17 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+
+  another:
+    needs: [build]
+    uses: ./.github/workflows/another.yml
+
+  after_another:
+    needs: [another]
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, after_another!
+
