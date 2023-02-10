@@ -12,11 +12,3 @@ jobs:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     uses: ./.github/workflows/failthingy.yml
 
-
-  on-failure:
-    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
-    runs-on: ubuntu-latest
-    steps:
-      # Runs a single command using the runners shell
-      - name: info
-        run: echo Will not run bc main failed
