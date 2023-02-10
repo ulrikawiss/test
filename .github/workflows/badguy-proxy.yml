@@ -12,7 +12,11 @@ env:
 jobs:
   on-success:
     runs-on: ubuntu-latest
-    uses: ./.github/workflows/badguy.yml
+    steps:
+      - name: badguy-step
+        uses: ./.github/workflows/badguy.yml
+        continue-on-error: true
+
   on-failure:
     runs-on: ubuntu-latest
     steps:
