@@ -1,0 +1,21 @@
+name: badguy-proxy
+
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: [CI]
+    types: completed
+
+env:
+  CAKE: bake
+
+jobs:
+  on-success:
+    runs-on: ubuntu-latest
+    uses: ./.github/badguy.yml
+  on-failure:
+    runs-on: ubuntu-latest
+    steps:
+      # Runs a single command using the runners shell
+      - name: info
+        run: echo Will not run bc main failed
