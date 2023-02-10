@@ -45,17 +45,3 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, after_another!
-
-  badguy:
-    needs: [build]
-    uses: ./.github/workflows/badguy.yml
-    continue-on-error: true
-
-  after_badguy:
-    needs: [badguy]
-    runs-on: ubuntu-latest
-    continue-on-error: true
-    steps:
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, after_badguy!

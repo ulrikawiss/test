@@ -3,16 +3,25 @@ name: badguy
 on:
   workflow_dispatch:
   workflow_call:
+  workflow_run:
+    workflows: [CI]
+    types: completed
 
 env:
   CAKE: bake
 
 jobs:
-  another-job:
+  on-success:
     runs-on: ubuntu-latest
     steps:
       # Runs a single command using the runners shell
-      - name: Run a one-line script
+      - name: Run a one-line script on failure
         run: echo Hello, badguy bad_job!
       - name: fail
         run: exit 1
+  on-failure:
+    runs-on: ubuntu-latest
+    steps:
+      # Runs a single command using the runners shell
+      - name: Run a one-line script on success
+        run: echo Hello, badguy bad_job!
