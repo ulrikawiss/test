@@ -5,12 +5,10 @@ on:
 
 
 jobs:
+
   on-success:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: badguy-step
-        uses: ./.github/workflows/badguy.yml
+    uses: ./.github/workflows/badguy.yml
+
 
   on-failure:
     runs-on: ubuntu-latest
