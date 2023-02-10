@@ -2,20 +2,15 @@ name: badguy-proxy
 
 on:
   workflow_dispatch:
-  workflow_run:
-    workflows: [CI]
-    types: completed
 
-env:
-  CAKE: bake
 
 jobs:
   on-success:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - name: badguy-step
-        uses: ./test/.github/workflows/badguy.yml
-        continue-on-error: true
+        uses: ./.github/workflows/badguy.yml
 
   on-failure:
     runs-on: ubuntu-latest
