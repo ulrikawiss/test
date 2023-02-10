@@ -1,4 +1,4 @@
-name: badguy
+name: failthingy
 
 on:
   workflow_dispatch:

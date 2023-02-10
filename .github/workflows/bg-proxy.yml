@@ -7,7 +7,7 @@ on:
 jobs:
 
   on-success:
-    uses: ./.github/workflows/badguy.yml
+    uses: ./.github/workflows/failthingy.yml
 
 
   on-failure:
