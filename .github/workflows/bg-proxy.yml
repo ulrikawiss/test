@@ -1,4 +1,4 @@
-name: badguy-proxy
+name: trigger for e2e tests
 
 on:
   workflow_dispatch:
