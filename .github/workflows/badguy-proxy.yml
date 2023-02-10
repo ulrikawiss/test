@@ -13,6 +13,7 @@ jobs:
   on-success:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - name: badguy-step
         uses: ./.github/workflows/badguy.yml
         continue-on-error: true
