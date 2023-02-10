@@ -3,7 +3,6 @@ name: badguy-proxy
 on:
   workflow_dispatch:
 
-
 jobs:
 
   on-success:

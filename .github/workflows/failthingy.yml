@@ -8,17 +8,12 @@ env:
   CAKE: bake
 
 jobs:
-  on-success:
+  failinghard:
     runs-on: ubuntu-latest
     steps:
       # Runs a single command using the runners shell
       - name: Run a one-line script on failure
-        run: echo Hello, badguy bad_job!
+        run: echo Hello, failing!
       - name: fail
         run: exit 1
-  on-failure:
-    runs-on: ubuntu-latest
-    steps:
-      # Runs a single command using the runners shell
-      - name: Run a one-line script on success
-        run: echo Hello, badguy bad_job!
+
