@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: badguy-step
-        uses: ./.github/workflows/badguy.yml
+        uses: ./test/.github/workflows/badguy.yml
         continue-on-error: true
 
   on-failure:
