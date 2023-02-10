@@ -33,8 +33,6 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
 
-      - name: fail
-        run: exit 1
   another:
     needs: [build]
     uses: ./.github/workflows/another.yml
