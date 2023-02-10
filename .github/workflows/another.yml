@@ -14,3 +14,5 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, another another_job!
+      - name: echo env var
+        run: echo "$CAKE"
