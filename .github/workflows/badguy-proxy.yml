@@ -12,7 +12,7 @@ env:
 jobs:
   on-success:
     runs-on: ubuntu-latest
-    uses: ./.github/badguy.yml
+    uses: ./.github/workflows/badguy.yml
   on-failure:
     runs-on: ubuntu-latest
     steps:

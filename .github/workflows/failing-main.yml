@@ -34,7 +34,8 @@ jobs:
           echo test, and deploy your project.
 
   failing-step:
-    run: exit 1
+    steps:
+      - run: exit 1
 
   another:
     needs: [build]
