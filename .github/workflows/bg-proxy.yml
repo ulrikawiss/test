@@ -9,5 +9,5 @@ on:
 jobs:
 
   on-success:
-    uses: ./.github/workflows/slowthingy.yml
+    uses: ./.github/workflows/another.yml
 
