@@ -10,4 +10,5 @@ jobs:
 
   on-success:
     uses: ./.github/workflows/another.yml
+    secrets: inherit
 
