@@ -16,3 +16,5 @@ jobs:
         run: echo Hello, another another_job!
       - name: echo env var
         run: echo "$CAKE"
+      - name: echo secret
+        run: echo ${{ secrets.CAKE_SECRET }}
