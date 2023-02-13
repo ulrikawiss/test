@@ -4,6 +4,8 @@ on:
   workflow_dispatch:
   workflow_call:
 
+concurrency: ci-slowthingy
+
 jobs:
   failinghard:
     runs-on: ubuntu-latest
