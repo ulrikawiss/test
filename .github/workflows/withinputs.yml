@@ -1,0 +1,33 @@
+name: with inputs
+
+on:
+  workflow_dispatch:
+    inputs:
+      publish:
+        type: boolean
+        description: Publish binaries to S3?
+
+
+jobs:
+  cake:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo Hello cake
+
+  bake:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo Hello bake
+
+  cookie:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo Hello cookie
+
+  publishing:
+    name: Publish binaries to S3
+    runs-on: ubuntu-latest
+    needs: [cake bake cookie]
+    if:  ${{ inputs.publish }}
+    steps:
+      - run: echo Hello publishing
