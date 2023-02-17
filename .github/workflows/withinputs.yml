@@ -7,9 +7,6 @@ on:
         type: boolean
         description: Publish binaries to S3?
 
-defaults:
-  run:
-    working-directory: mydir
 
 jobs:
   cake:
@@ -55,4 +52,5 @@ jobs:
       - name: Display structure of downloaded files
         run: ls -R
         working-directory: target/bakeacake
-
+      - name: Display structure of root dir
+        run: ls -R
