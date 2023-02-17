@@ -14,7 +14,7 @@ jobs:
         run: |
           mkdir ulrika
           touch ulrika/cake.txt
-          echo "cake cake cake" > ulrika/cake.txt
+          echo "caaaaaaaaake" > ulrika/cake.txt
       - name: cache
         uses: actions/cache@v3
         with:
