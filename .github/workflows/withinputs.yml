@@ -16,8 +16,9 @@ jobs:
       - name: upload
         uses: actions/upload-artifact@v3
         with:
-          path: readme.md
+          path: README.md
           name: cake.md
+          if-no-files-found: error
 
   bake:
     runs-on: ubuntu-latest
