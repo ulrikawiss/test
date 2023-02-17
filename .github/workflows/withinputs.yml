@@ -7,6 +7,9 @@ on:
         type: boolean
         description: Publish binaries to S3?
 
+defaults:
+  run:
+    working-directory: mydir
 
 jobs:
   cake:
@@ -18,7 +21,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           path: README.md
-          name: cake.md
+          name: cake
           if-no-files-found: error
 
   bake:
@@ -30,7 +33,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           path: hello.clj
-          name: bake.clj
+          name: bake
           if-no-files-found: error
 
   cookie:
