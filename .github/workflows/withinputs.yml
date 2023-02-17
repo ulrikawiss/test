@@ -13,10 +13,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo Hello cake
+      - uses: actions/checkout@v3
       - name: upload
         uses: actions/upload-artifact@v3
         with:
-          path: ./README.md
+          path: README.md
           name: cake.md
           if-no-files-found: error
 
