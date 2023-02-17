@@ -37,5 +37,10 @@ jobs:
     steps:
       - run: echo Hello publishing
       - uses: actions/checkout@v3
+      - name: cache
+        uses: actions/cache@v3
+        with:
+          path: cake.txt
+          key: mycake
       - name: Display structure of root dir
         run: ls -R
