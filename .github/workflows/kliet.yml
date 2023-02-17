@@ -1,0 +1,60 @@
+name: kliet
+
+on:
+  workflow_dispatch:
+    inputs:
+      publish:
+        type: boolean
+        description: Publish binaries to S3?
+
+defaults:
+  run:
+    working-directory: mydir
+
+jobs:
+  cake:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: echo Hello cake
+      - name: upload
+        uses: actions/upload-artifact@v3
+        with:
+          path: README.md
+          name: cake
+          if-no-files-found: error
+
+  bake:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: echo Hello bake
+      - name: upload
+        uses: actions/upload-artifact@v3
+        with:
+          path: hello.clj
+          name: bake
+          if-no-files-found: error
+
+  cookie:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo Hello cookie
+
+  publishing:
+    name: Publish binaries to S3
+    runs-on: ubuntu-latest
+    needs: [cake, bake, cookie]
+    if:  ${{ inputs.publish }}
+    steps:
+      - uses: actions/checkout@v3
+      - run: echo Hello publishing
+      - name: download
+        uses: actions/download-artifact@v3
+        with:
+          path: target/bakeacake
+      - name: Display structure of downloaded files
+        run: ls -R
+        working-directory: target/bakeacake
+      - name: Display structure of root dir
+        run: ls -R
