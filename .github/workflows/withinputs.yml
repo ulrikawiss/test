@@ -25,6 +25,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo Hello bake
+      - name: upload
+        uses: actions/upload-artifact@v3
+        with:
+          path: hello.clj
+          name: bake.clj
+          if-no-files-found: error
 
   cookie:
     runs-on: ubuntu-latest
