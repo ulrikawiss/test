@@ -40,7 +40,7 @@ jobs:
       - name: cache
         uses: actions/cache@v3
         with:
-          path: cake.txt
+          path: boo/foo.txt
           key: mycake
       - name: Display structure of root dir
         run: ls -R
