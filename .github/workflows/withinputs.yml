@@ -45,6 +45,7 @@ jobs:
     if:  ${{ inputs.publish }}
     steps:
       - run: echo Hello publishing
+      - uses: actions/checkout@v3
       - name: download
         uses: actions/download-artifact@v3
         with:
