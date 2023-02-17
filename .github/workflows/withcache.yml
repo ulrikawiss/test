@@ -1,0 +1,41 @@
+name: with cache
+
+on:
+  workflow_dispatch:
+
+
+jobs:
+  cake:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo Hello cake
+      - uses: actions/checkout@v3
+      - name: create a file
+        run: |
+          touch cake.txt
+          echo "bake a cake" > cake.txt
+      - name: cache
+        uses: actions/cache@v3
+        with:
+          path: cake.txt
+          key: mycake
+
+  bake:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo Hello bake
+
+  cookie:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo Hello cookie
+
+  publishing:
+    name: Publish binaries to S3
+    runs-on: ubuntu-latest
+    needs: [cake, bake, cookie]
+    steps:
+      - run: echo Hello publishing
+      - uses: actions/checkout@v3
+      - name: Display structure of root dir
+        run: ls -R
