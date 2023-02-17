@@ -68,3 +68,15 @@ jobs:
       - name: Display structure of home dir
         run: ls -R
         working-directory: .
+      - name: zip
+        working-directory: target/bakeacake
+        run: |
+          mkdir zips
+          zip -j zips/cake cake/*
+          zip -j zips/bake bake/*
+          zip -j zips/cookie cookie/*
+          ls -R
+      - name: Display structure of home dir
+        run: ls -R
+        working-directory: .
+
