@@ -11,6 +11,9 @@ defaults:
   run:
     working-directory: mydir
 
+env:
+  cake-name: cake
+
 jobs:
   cake:
     runs-on: ubuntu-latest
@@ -21,7 +24,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           path: mydir/foo.txt
-          name: cake
+          name: ${{ env.cake-name }}
           if-no-files-found: error
 
   bake:
@@ -72,7 +75,7 @@ jobs:
         working-directory: target/bakeacake
         run: |
           mkdir zips
-          zip -j zips/cake cake/*
+          zip -j zips/${{ env.cake-name }} ${{ env.cake-name }}/*
           zip -j zips/bake bake/*
           zip -j zips/cookie cookie/*
           ls -R
