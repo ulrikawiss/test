@@ -12,23 +12,44 @@ jobs:
       - uses: actions/checkout@v3
       - name: create a file
         run: |
-          touch cake.txt
-          echo "bake a cake" > cake.txt
+          mkdir ulrika
+          touch ulrika/cake.txt
+          echo "cake cake cake" > ulrika/cake.txt
       - name: cache
         uses: actions/cache@v3
         with:
-          path: cake.txt
+          path: ulrika/cake.txt
           key: mycake
 
   bake:
     runs-on: ubuntu-latest
     steps:
       - run: echo Hello bake
+      - name: create a file
+        run: |
+          mkdir ulrika
+          touch ulrika/bake.txt
+          echo "bake bake bake" > ulrika/bake.txt
+      - name: cache
+        uses: actions/cache@v3
+        with:
+          path: ulrika/bake.txt
+          key: mycake
 
   cookie:
     runs-on: ubuntu-latest
     steps:
       - run: echo Hello cookie
+      - name: create a file
+        run: |
+          mkdir ulrika
+          touch ulrika/cookie.txt
+          echo "cookie cookie cookie" > ulrika/cookie.txt
+      - name: cache
+        uses: actions/cache@v3
+        with:
+          path: ulrika/cookie.txt
+          key: mycake
 
   publishing:
     name: Publish binaries to S3
@@ -40,7 +61,7 @@ jobs:
       - name: cache
         uses: actions/cache@v3
         with:
-          path: boo/foo.txt
+          path: ulrika
           key: mycake
       - name: Display structure of root dir
         run: ls -R
