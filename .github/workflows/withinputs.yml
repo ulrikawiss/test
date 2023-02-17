@@ -25,6 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo Hello bake
+      - uses: actions/checkout@v3
       - name: upload
         uses: actions/upload-artifact@v3
         with:
