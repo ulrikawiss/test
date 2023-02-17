@@ -20,7 +20,7 @@ jobs:
       - name: upload
         uses: actions/upload-artifact@v3
         with:
-          path: foo.txt
+          path: mydir/foo.txt
           name: cake
           if-no-files-found: error
 
@@ -32,7 +32,7 @@ jobs:
       - name: upload
         uses: actions/upload-artifact@v3
         with:
-          path: foo.txt
+          path: mydir/foo.txt
           name: bake
           if-no-files-found: error
 
@@ -44,7 +44,7 @@ jobs:
       - name: upload
         uses: actions/upload-artifact@v3
         with:
-          path: foo.txt
+          path: mydir/foo.txt
           name: cookie
           if-no-files-found: error
 
