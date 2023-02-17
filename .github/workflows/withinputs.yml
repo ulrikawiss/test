@@ -13,6 +13,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo Hello cake
+      - name: upload
+        uses: actions/upload-artifact@v3
+        with:
+          path: readme.md
+          name: cake.md
 
   bake:
     runs-on: ubuntu-latest
@@ -31,3 +36,8 @@ jobs:
     if:  ${{ inputs.publish }}
     steps:
       - run: echo Hello publishing
+      - name: download
+        uses: actions/download-artifact@v3
+        with:
+          name: cake.md
+
