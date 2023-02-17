@@ -70,3 +70,5 @@ jobs:
           key: mybake
       - name: Display structure of root dir
         run: ls -R
+      - name: check content of cake.txt
+        run: more ulrika/cake.txt
