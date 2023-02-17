@@ -63,5 +63,8 @@ jobs:
       - name: Display structure of downloaded files
         run: ls -R
         working-directory: target/bakeacake
+      - name: Display structure of default working  dir
+        run: ls -R
       - name: Display structure of root dir
         run: ls -R
+        working-directory: /
