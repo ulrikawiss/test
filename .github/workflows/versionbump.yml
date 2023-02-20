@@ -25,7 +25,7 @@ jobs:
     steps:
       - name: echo inputs
         run: |
-          echo "bump: ${{ bump }} publish: ${{publish }}"
+          echo "bump: ${{ inputs.bump }} publish: ${{ inputs.publish }}"
       - name: Checkout
         uses: actions/checkout@v3
       - name: configure git
