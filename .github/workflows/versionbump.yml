@@ -9,6 +9,7 @@ on:
           - major
           - minor
           - patch
+        default: patch
         description: Choose what to bump.
 
 env:
@@ -39,7 +40,7 @@ jobs:
           vsce package
       - name: Upload
         uses: actions/upload-artifact@v3
-        with:
+        with:windows
           path: ./*.vsix
           name: vsix-package
       - name: Publish to s3
