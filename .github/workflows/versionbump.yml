@@ -21,8 +21,7 @@ jobs:
           node-version: 16.x
       - name: New version in package.json
         run: | 
-          echo "NEW_VERSION=$(npm version patch)" >> $GITHUB_ENV
-          echo "PACKAGE_NAME=$(npm run getName -s)" >> $GITHUB_ENV
+          $(npm version patch)
           more package.json
           git status
       - name: build extension
@@ -32,7 +31,9 @@ jobs:
       - name: Upload
         uses: actions/upload-artifact@v3
         with:
-          path: ${{ env.PACKAGE_NAME }}*.vsix
-          name: ${{ env.PACKAGE_NAME }}_${{ env.NEW_VERSION }}
+          path: ./*.vsix
+          name: vsix-package
+      - name: Publish to s3
+        run: echo "hello publish"
       - name: Push package.json
         run: git push
