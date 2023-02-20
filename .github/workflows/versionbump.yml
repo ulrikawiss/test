@@ -20,5 +20,4 @@ jobs:
       - run: npm version patch
       - run: more package.json
       - run: git add package.json
-      - run: git commit -m "hejsan"
       - run: git push
