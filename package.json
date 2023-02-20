@@ -1,5 +1,15 @@
 {
   "name": "my-awesome-package",
+  "repository": {
+    "type": "git",
+    "url": "hello"
+  },
   "version": "2.0.5",
-  "author": "Your Name <email@example.com>"
+  "author": "Your Name <email@example.com>",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "scripts": {
+    "getName": "echo $npm_package_name"
+  }
 }

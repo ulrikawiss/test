@@ -3,6 +3,9 @@ name: version bump
 on:
   workflow_dispatch:
 
+env:
+  extension-name: my-awesome-package
+
 jobs:
   build:
     runs-on: windows-latest
@@ -16,8 +19,20 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16.x
-      - run: more package.json
-      - run: npm version patch
-      - run: more package.json
-      - run: git add package.json
-      - run: git push
+      - name: New version in package.json
+        run: | 
+          echo "NEW_VERSION=$(npm version patch)" >> $GITHUB_ENV
+          echo "PACKAGE_NAME=$(npm run getName -s)" >> $GITHUB_ENV
+          more package.json
+          git status
+      - name: build extension
+        run: |
+          npm install --global @vscode/vsce
+          vsce package
+      - name: Upload
+        uses: actions/upload-artifact@v3
+        with:
+          path: ${{ env.PACKAGE_NAME }}*.vsix
+          name: ${{ env.PACKAGE_NAME }}_${{ env.NEW_VERSION }}
+      - name: Push package.json
+        run: git push
