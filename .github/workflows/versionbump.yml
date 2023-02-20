@@ -11,6 +11,9 @@ on:
           - patch
         default: patch
         description: Choose what to bump.
+      publish:
+        type: boolean
+        description: Publish binaries to S3?
 
 env:
   extension-name: my-awesome-package
@@ -18,7 +21,11 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
     steps:
+      - name: echo inputs
+        run: |
+          echo "bump: ${{ bump }} publish: ${{publish }}"
       - name: Checkout
         uses: actions/checkout@v3
       - name: configure git
@@ -44,6 +51,7 @@ jobs:
           path: ./*.vsix
           name: vsix-package
       - name: Publish to s3
+        if: ${{ inputs.publish }}
         run: echo "hello publish"
       - name: Push package.json
         run: git push
