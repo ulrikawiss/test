@@ -9,7 +9,6 @@ on:
           - major
           - minor
           - patch
-        default: patch
         description: Choose what to bump.
 
 env:
