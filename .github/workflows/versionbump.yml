@@ -10,8 +10,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - run: |
-          git config user.email "cake"
-          git config user.name "bake"
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
