@@ -37,10 +37,7 @@ jobs:
         with:
           node-version: 16.x
       - name: New version in package.json
-        run: | 
-          npm version ${{ inputs.bump }}
-          more package.json
-          git status
+        run: npm version ${{ inputs.bump }}
       - name: build extension
         run: |
           npm install --global @vscode/vsce
