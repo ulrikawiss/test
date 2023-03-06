@@ -29,8 +29,8 @@ jobs:
         if: github.ref == 'refs/heads/master'
         run: echo "master is true so I do this"
       - name: do if master and publish
-        if: inputs.publish == "true" && github.ref == 'refs/heads/master'
+        if: inputs.publish == true && github.ref == 'refs/heads/master'
         run: echo "master and publish are true so I do this"
       - name: do if master or publish
-        if: inputs.publish == "true" || github.ref == 'refs/heads/master'
+        if: inputs.publish == true || github.ref == 'refs/heads/master'
         run: echo "master or publish are true so I do this"
