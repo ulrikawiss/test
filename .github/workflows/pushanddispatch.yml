@@ -6,7 +6,6 @@ on:
       publish:
         type: boolean
         description: Publish?
-        default: false
   push:
     branches:
       - master
