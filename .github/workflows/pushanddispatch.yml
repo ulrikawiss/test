@@ -1,0 +1,35 @@
+name: Push and Dispatch partnership
+
+on:
+  workflow_dispatch:
+    inputs:
+      publish:
+        type: boolean
+        description: Publish?
+  push:
+    branches:
+      - master
+    paths:
+      - 'mydir/**'
+
+
+jobs:
+  myjob:
+    runs-on: ubuntu-latest
+    steps:
+      # Runs a single command using the runners shell
+      - name: Echo input
+        run: |
+          echo "Hello, here is the input: ${{ inputs.publish }}"
+      - name: do if publish
+        if:  ${{ inputs.publish }}
+        run: echo "publish is true so I do this"
+      - name: do if master
+        if: github.ref == 'refs/heads/master'
+        run: echo "master is true so I do this"
+      - name: do if master and publish
+        if: ${{ inputs.publish }} && github.ref == 'refs/heads/master'
+        run: echo "master and publish are true so I do this"
+      - name: do if master and publish
+        if: ${{ inputs.publish }} || github.ref == 'refs/heads/master'
+        run: echo "master and publish are true so I do this"
