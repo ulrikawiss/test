@@ -10,13 +10,22 @@ jobs:
     steps:
       # Runs a single command using the runners shell
       - name: Run a one-line script
+        id: hello1
         run: echo Hello 1
-      - run: exit 1
+      - name: error step
+        id: errorstep
+        run: exit 1
       - name: Sleep for 5 seconds
         id: sleepy
         run: sleep 5s
         shell: bash
-      - name: another hello
+      - name: hello1 step status
+        if: always()
+        run: echo Hello ${{ steps.hello1.conclusion }} hello ${{ steps.hello1.outcome }} 2
+      - name: error step status
+        if: always()
+        run: echo Hello ${{ steps.errorstep.conclusion }} hello ${{ steps.errorstep.outcome }} 2
+      - name: sleepy step status
         if: always()
         run: echo Hello ${{ steps.sleepy.conclusion }} hello ${{ steps.sleepy.outcome }} 2
 
