@@ -1,0 +1,21 @@
+name: timeouts
+
+on:
+  workflow_dispatch:
+
+jobs:
+  slooow:
+    timeout-minutes: 1
+    runs-on: ubuntu-latest
+    steps:
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello 1
+      - name: Sleep for 30 seconds
+        run: sleep 90s
+        shell: bash
+      - name: another hello
+        if: always()
+        run: echo Hello 2
+
+
