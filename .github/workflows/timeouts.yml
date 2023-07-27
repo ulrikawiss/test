@@ -11,9 +11,10 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello 1
-      - name: Sleep for 90 seconds
+      - run: exit 1
+      - name: Sleep for 5 seconds
         id: sleepy
-        run: sleep 90s
+        run: sleep 5s
         shell: bash
       - name: another hello
         if: always()
