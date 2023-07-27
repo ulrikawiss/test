@@ -11,11 +11,12 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello 1
-      - name: Sleep for 30 seconds
+      - name: Sleep for 90 seconds
+        id: sleepy
         run: sleep 90s
         shell: bash
       - name: another hello
         if: always()
-        run: echo Hello 2
+        run: echo Hello ${{ steps.sleepy.conclusion }} hello ${{ steps.sleepy.outcome }} 2
 
 
